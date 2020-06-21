@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using T4Template.Models;
+using T4Template.Template;
 
 namespace T4Template.Controllers
 {
@@ -20,6 +21,10 @@ namespace T4Template.Controllers
 
         public IActionResult Index()
         {
+            TextFile page = new TextFile();
+            String pageContent = page.TransformText();
+            System.IO.File.WriteAllText("outputPage.html", pageContent);
+
             return View();
         }
 
